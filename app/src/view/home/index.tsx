@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { CenterBox } from './styled';
 import { getCounterData } from './state/counter/selector';
 import { incrementData, decrementData } from './state/counter/action';
+import { CenterBox } from './styled';
 
 export const App = ({increment, decrement, counterData}) => {
 

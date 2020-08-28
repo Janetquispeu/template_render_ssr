@@ -5,14 +5,14 @@
   "main": "./src/index.tsx",
   "scripts": {
     "client:start": "webpack-dev-server --devtool inline-source-map --hot --config config/webpack/dev.js",
-    "client:build": "webpack --config config/webpack/prod.js",
+    "client:build": "NODE_SSR=true webpack --config config/webpack/prod.js",
     "client:build-ssr": "webpack --config config/webpack/ssr.js",
     "test": "jest --config ./config/jest/jest.config.js",
     "lint": "eslint '**/*.tsx'",
     "stats": "webpack --profile --json --config config/webpack/prod.js > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json dist/",
     "server": "node mock/index.js",
-    "server:ssr": "node dist/ssr.js"
+    "server:ssr": "NODE_SSR=true node dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -60,6 +60,7 @@
     "webpack": "4.42.1",
     "webpack-bundle-analyzer": "3.6.1",
     "webpack-cli": "3.3.11",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.10.3",
+    "webpack-stats-plugin": "^0.3.2"
   }
 }

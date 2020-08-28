@@ -1,9 +1,10 @@
-export const renderFullPage = (body, preloadedState) => {
+export const html = ({ body, styles, scripts, preloadedState }) => {
   return `
     <!DOCTYPE html>
     <html lang="es">
       <head>
         <title>Redux Universal Example</title>
+        ${styles}
       </head>
       <body>
         <div id="root">${body}</div>
@@ -15,7 +16,10 @@ export const renderFullPage = (body, preloadedState) => {
             '\\u003c'
           )}
         </script>
-        <script src="ssr.js"></script>
+        ${Object.keys(scripts.assetsByChunkName)
+          .map((entry) => `<script type="text/javascript" src="${process.env.PATH_STATIC}/static/public/${scripts.assetsByChunkName[entry][0]}"></script>`)
+          .join('\n')
+        }
       </body>
     </html>
     `

@@ -1,13 +1,15 @@
 const path = require('path');
 const pathClient = path.join(__dirname, './../../src');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const outputDirectory = '../../dist';
+const outputDirectory = '../../dist/public/';
 
 module.exports = {
+  devtool: "source-map",
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, outputDirectory),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
+    chunkFilename: 'bundle.[hash].js',
     publicPath: '/'
   },
   resolve: {

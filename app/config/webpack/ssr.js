@@ -1,19 +1,18 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const rootPath = path.join(__dirname, '../../');
-
+console.log(path.join(rootPath, '/server/index.tsx'), '********')
 module.exports = {
 	mode: 'production',
-	resolve: {
-		extensions: ['.tsx', '.ts', '.js']
-	},
 	entry: path.join(rootPath, '/server/index.tsx'),
 	output: {
-		path: path.join(rootPath, '/dist/'),
-		filename: "ssr.js",
+		path: path.join(rootPath, '/dist/server'),
+		filename: "server.js",
 		globalObject: 'this'
+	},
+	resolve: {
+		extensions: ['.tsx', '.ts', '.js']
 	},
 	optimization: {
 		minimize: false
@@ -32,9 +31,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [path.join(rootPath, '/dist/')],
-    }),
 		new HtmlWebpackPlugin({ 
 			template: path.join(rootPath, '/public/index.html'),
 			minify: {

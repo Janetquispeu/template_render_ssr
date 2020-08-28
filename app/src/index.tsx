@@ -8,7 +8,7 @@ import App from './view/home';
 const store = configureStore();
 
 const render = process.env.NODE_SSR ? 'hydrate' : 'render';
-
+console.log('render', render);
 ReactDOM[render](
   <Provider store={store}>
     <Layout>
