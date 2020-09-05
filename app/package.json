@@ -1,8 +1,9 @@
 {
-  "name": "app-library-react",
+  "name": "bumeran-spa-fair",
   "version": "0.0.1",
-  "description": "template to build spa",
+  "description": "Expor feria web",
   "main": "./src/index.tsx",
+  "private": true,
   "scripts": {
     "client:start": "webpack-dev-server --devtool inline-source-map --hot --config config/webpack/dev.js",
     "client:build": "NODE_SSR=true webpack --config config/webpack/prod.js",
